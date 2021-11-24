@@ -11,15 +11,12 @@ abstract class ModelBase
 {
     private ?string $id = null;
 
-    /**
-     * @return string
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
