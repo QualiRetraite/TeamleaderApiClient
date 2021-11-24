@@ -42,7 +42,7 @@ abstract class ContactBase extends ModelBase
 
     private ?string $language = null;
 
-    private ?\QR\TeamleaderApiClient\Model\Aggregate\PaymentTerm $paymentTerm = null;
+    private ?PaymentTerm $paymentTerm = null;
 
     private ?\DateTime $addedAt = null;
 
