@@ -23,67 +23,85 @@ class Contact extends ContactBase
      */
     private ?array $addresses = null;
 
-    private \QR\TeamleaderApiClient\Model\Aggregate\CustomField|\QR\TeamleaderApiClient\Model\Aggregate\LinkedCustomField $customFields;
+    /**
+     * @var array<CustomField|LinkedCustomField>
+     */
+    private array $customFields;
 
-    private ?\QR\TeamleaderApiClient\Model\Aggregate\CompanyEmployee $companies = null;
+    /**
+     * @var CompanyEmployee[]|null
+     */
+    private ?array $companies = null;
 
     public function create(string $lastName): void
     {
         $this->setLastName($lastName);
     }
 
-    public function getRemarks(): string
+    public function getRemarks(): ?string
     {
         return $this->remarks;
     }
 
-    public function setRemarks(string $remarks): void
+    public function setRemarks(?string $remarks): void
     {
         $this->remarks = $remarks;
     }
 
-    public function hasMarketingMailsConsent(): bool
+    public function hasMarketingMailsConsent(): ?bool
     {
         return $this->marketingMailsConsent;
     }
 
-    public function setMarketingMailsConsent(bool $marketingMailsConsent): void
+    public function setMarketingMailsConsent(?bool $marketingMailsConsent): void
     {
         $this->marketingMailsConsent = $marketingMailsConsent;
     }
 
     /**
-     * @return AddressWithType[]
+     * @return AddressWithType[]|null
      */
-    public function getAddresses(): array
+    public function getAddresses(): ?array
     {
         return $this->addresses;
     }
 
     /**
-     * @param AddressWithType[] $addresses
+     * @param AddressWithType[]|null $addresses
      */
-    public function setAddresses(array $addresses): void
+    public function setAddresses(?array $addresses): void
     {
         $this->addresses = $addresses;
     }
 
-    public function getCustomFields(): CustomField|LinkedCustomField
+    /**
+     * @return array<CustomField|LinkedCustomField>
+     */
+    public function getCustomFields(): array
     {
         return $this->customFields;
     }
 
-    public function setCustomFields(CustomField|LinkedCustomField $customFields): void
+    /**
+     * @param array<CustomField|LinkedCustomField> $customFields
+     */
+    public function setCustomFields(array $customFields): void
     {
         $this->customFields = $customFields;
     }
 
-    public function getCompanies(): CompanyEmployee
+    /**
+     * @return CompanyEmployee[]
+     */
+    public function getCompanies(): array
     {
         return $this->companies;
     }
 
-    public function setCompanies(CompanyEmployee $companies): void
+    /**
+     * @param CompanyEmployee[] $companies
+     */
+    public function setCompanies(array $companies): void
     {
         $this->companies = $companies;
     }
