@@ -19,7 +19,7 @@ abstract class CompanyBase extends ModelBase
 {
     private ?string $name = null;
 
-    private ?\QR\TeamleaderApiClient\Model\Aggregate\LinkedBusinessType $businessType = null;
+    private ?LinkedBusinessType $businessType = null;
 
     private ?string $vatNumber = null;
 
@@ -45,11 +45,11 @@ abstract class CompanyBase extends ModelBase
 
     private ?string $preferredCurrency = null;
 
-    private ?\QR\TeamleaderApiClient\Model\Aggregate\PaymentTerm $paymentTerm = null;
+    private ?PaymentTerm $paymentTerm = null;
 
-    private ?\QR\TeamleaderApiClient\Model\Aggregate\InvoicingPreference $invoicingPreferences = null;
+    private ?InvoicingPreference $invoicingPreferences = null;
 
-    private ?\QR\TeamleaderApiClient\Model\Aggregate\LinkedUser $responsibleUser = null;
+    private ?LinkedUser $responsibleUser = null;
 
     private ?string $addedAt = null;
 
@@ -58,7 +58,7 @@ abstract class CompanyBase extends ModelBase
     private ?string $webUrl = null;
 
     /**
-     * @var string[]
+     * @var string[]|null
      */
     private ?array $tags = null;
 
@@ -67,237 +67,192 @@ abstract class CompanyBase extends ModelBase
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return LinkedBusinessType
-     */
-    public function getBusinessType()
+    public function getBusinessType(): ?LinkedBusinessType
     {
         return $this->businessType;
     }
 
-    public function setBusinessType(LinkedBusinessType $businessType): void
+    public function setBusinessType(?LinkedBusinessType $businessType): void
     {
         $this->businessType = $businessType;
     }
 
-    /**
-     * @return string
-     */
-    public function getVatNumber()
+    public function getVatNumber(): ?string
     {
         return $this->vatNumber;
     }
 
-    public function setVatNumber(string $vatNumber): void
+    public function setVatNumber(?string $vatNumber): void
     {
         $this->vatNumber = $vatNumber;
     }
 
-    /**
-     * @return string
-     */
-    public function getNationalIdentificationNumber()
+    public function getNationalIdentificationNumber(): ?string
     {
         return $this->nationalIdentificationNumber;
     }
 
-    public function setNationalIdentificationNumber(string $nationalIdentificationNumber): void
+    public function setNationalIdentificationNumber(?string $nationalIdentificationNumber): void
     {
         $this->nationalIdentificationNumber = $nationalIdentificationNumber;
     }
 
     /**
-     * @return Email[]
+     * @return Email[]|null
      */
-    public function getEmails()
+    public function getEmails(): ?array
     {
         return $this->emails;
     }
 
     /**
-     * @param Email[] $emails
+     * @param Email[]|null $emails
      */
-    public function setEmails(array $emails): void
+    public function setEmails(?array $emails): void
     {
         $this->emails = $emails;
     }
 
     /**
-     * @return Telephone[]
+     * @return Telephone[]|null
      */
-    public function getTelephones()
+    public function getTelephones(): ?array
     {
         return $this->telephones;
     }
 
     /**
-     * @param Telephone[] $telephones
+     * @param Telephone[]|null $telephones
      */
-    public function setTelephones(array $telephones): void
+    public function setTelephones(?array $telephones): void
     {
         $this->telephones = $telephones;
     }
 
-    /**
-     * @return string
-     */
-    public function getWebsite()
+    public function getWebsite(): ?string
     {
         return $this->website;
     }
 
-    public function setWebsite(string $website): void
+    public function setWebsite(?string $website): void
     {
         $this->website = $website;
     }
 
-    /**
-     * @return string
-     */
-    public function getIban()
+    public function getIban(): ?string
     {
         return $this->iban;
     }
 
-    public function setIban(string $iban): void
+    public function setIban(?string $iban): void
     {
         $this->iban = $iban;
     }
 
-    /**
-     * @return string
-     */
-    public function getBic()
+    public function getBic(): ?string
     {
         return $this->bic;
     }
 
-    public function setBic(string $bic): void
+    public function setBic(?string $bic): void
     {
         $this->bic = $bic;
     }
 
-    /**
-     * @return string
-     */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    public function setLanguage(string $language): void
+    public function setLanguage(?string $language): void
     {
         $this->language = $language;
     }
 
-    /**
-     * @return string
-     */
-    public function getPreferredCurrency()
+    public function getPreferredCurrency(): ?string
     {
         return $this->preferredCurrency;
     }
 
-    public function setPreferredCurrency(string $preferredCurrency): void
+    public function setPreferredCurrency(?string $preferredCurrency): void
     {
         $this->preferredCurrency = $preferredCurrency;
     }
 
-    /**
-     * @return PaymentTerm
-     */
-    public function getPaymentTerm()
+    public function getPaymentTerm(): ?PaymentTerm
     {
         return $this->paymentTerm;
     }
 
-    public function setPaymentTerm(PaymentTerm $paymentTerm): void
+    public function setPaymentTerm(?PaymentTerm $paymentTerm): void
     {
         $this->paymentTerm = $paymentTerm;
     }
 
-    /**
-     * @return InvoicingPreference
-     */
-    public function getInvoicingPreferences()
+    public function getInvoicingPreferences(): ?InvoicingPreference
     {
         return $this->invoicingPreferences;
     }
 
-    public function setInvoicingPreferences(InvoicingPreference $invoicingPreferences): void
+    public function setInvoicingPreferences(?InvoicingPreference $invoicingPreferences): void
     {
         $this->invoicingPreferences = $invoicingPreferences;
     }
 
-    /**
-     * @return LinkedUser
-     */
-    public function getResponsibleUser()
+    public function getResponsibleUser(): ?LinkedUser
     {
         return $this->responsibleUser;
     }
 
-    public function setResponsibleUser(LinkedUser $responsibleUser): void
+    public function setResponsibleUser(?LinkedUser $responsibleUser): void
     {
         $this->responsibleUser = $responsibleUser;
     }
 
-    /**
-     * @return string
-     */
-    public function getAddedAt()
+    public function getAddedAt(): ?string
     {
         return $this->addedAt;
     }
 
-    public function setAddedAt(string $addedAt): void
+    public function setAddedAt(?string $addedAt): void
     {
         $this->addedAt = $addedAt;
     }
 
-    /**
-     * @return string
-     */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(?string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
 
-    /**
-     * @return string
-     */
-    public function getWebUrl()
+    public function getWebUrl(): ?string
     {
         return $this->webUrl;
     }
 
-    public function setWebUrl(string $webUrl): void
+    public function setWebUrl(?string $webUrl): void
     {
         $this->webUrl = $webUrl;
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
@@ -305,7 +260,7 @@ abstract class CompanyBase extends ModelBase
     /**
      * @param string[] $tags
      */
-    public function setTags(array $tags): void
+    public function setTags(?array $tags): void
     {
         $this->tags = $tags;
     }
