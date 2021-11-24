@@ -17,7 +17,7 @@ abstract class TimeTrackingFieldDescriptionBase extends FieldDescriptionBase
     /**
      * {@inheritdoc}
      */
-    protected function getFieldMapping()
+    protected function getFieldMapping(): array
     {
         return [
             'id',

@@ -15,7 +15,7 @@ abstract class CustomFieldDefinitionFieldDescriptionBase extends FieldDescriptio
     /**
      * {@inheritdoc}
      */
-    protected function getFieldMapping()
+    protected function getFieldMapping(): array
     {
         return [
             'id',
