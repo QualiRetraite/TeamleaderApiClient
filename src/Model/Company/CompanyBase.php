@@ -51,9 +51,9 @@ abstract class CompanyBase extends ModelBase
 
     private ?LinkedUser $responsibleUser = null;
 
-    private ?string $addedAt = null;
+    private ?\DateTimeInterface $addedAt = null;
 
-    private ?string $updatedAt = null;
+    private ?\DateTimeInterface $updatedAt = null;
 
     private ?string $webUrl = null;
 
@@ -219,22 +219,22 @@ abstract class CompanyBase extends ModelBase
         $this->responsibleUser = $responsibleUser;
     }
 
-    public function getAddedAt(): ?string
+    public function getAddedAt(): ?\DateTimeInterface
     {
         return $this->addedAt;
     }
 
-    public function setAddedAt(?string $addedAt): void
+    public function setAddedAt(?\DateTimeInterface $addedAt): void
     {
         $this->addedAt = $addedAt;
     }
 
-    public function getUpdatedAt(): ?string
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?string $updatedAt): void
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
