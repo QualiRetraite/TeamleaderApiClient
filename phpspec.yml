@@ -1,0 +1,6 @@
+suites:
+    TeamleaderApiClient:
+        namespace: QR\TeamleaderApiClient
+        psr4_prefix: QR\TeamleaderApiClient
+
+formatter.name: pretty

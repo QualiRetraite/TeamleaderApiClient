@@ -1,0 +1,5 @@
+# Composer generated directories
+bin/
+vendor/
+
+.php-cs-fixer.cache
