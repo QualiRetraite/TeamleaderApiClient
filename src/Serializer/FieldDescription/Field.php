@@ -17,8 +17,12 @@ class Field
      * @param string|null $setter
      * @param string|null $getter
      */
-    public function __construct(private $name, private $getter = null, private $setter = null, private $targetClass = null)
-    {
+    public function __construct(
+        private string $name,
+        private ?string $getter = null,
+        private ?string $setter = null,
+        private ?string $targetClass = null
+    ) {
     }
 
     public function getName(): string
@@ -26,17 +30,17 @@ class Field
         return $this->name;
     }
 
-    public function getTargetClass(): string
+    public function getTargetClass(): ?string
     {
         return $this->targetClass;
     }
 
-    public function getSetter(): string
+    public function getSetter(): ?string
     {
         return $this->setter;
     }
 
-    public function getGetter(): string
+    public function getGetter(): ?string
     {
         return $this->getter;
     }
