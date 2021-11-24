@@ -16,7 +16,7 @@ abstract class InvoiceFieldDescriptionBase extends FieldDescriptionBase
     /**
      * {@inheritdoc}
      */
-    protected function getFieldMapping()
+    protected function getFieldMapping(): array
     {
         return [
             'id',

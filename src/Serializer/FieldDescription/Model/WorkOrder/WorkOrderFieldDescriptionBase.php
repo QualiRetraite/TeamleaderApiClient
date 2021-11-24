@@ -16,7 +16,7 @@ abstract class WorkOrderFieldDescriptionBase extends FieldDescriptionBase
     /**
      * {@inheritdoc}
      */
-    protected function getFieldMapping()
+    protected function getFieldMapping(): array
     {
         return [
             'customer' => ['target_class' => LinkedCustomer::class],

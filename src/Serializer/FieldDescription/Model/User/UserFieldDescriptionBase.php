@@ -8,15 +8,9 @@ use QR\TeamleaderApiClient\Model\Aggregate\Account;
 use QR\TeamleaderApiClient\Model\Aggregate\Telephone;
 use QR\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
-/**
- * Class UserFieldDescriptionBase.
- */
 abstract class UserFieldDescriptionBase extends FieldDescriptionBase
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function getFieldMapping()
+    protected function getFieldMapping(): array
     {
         return [
             'id',

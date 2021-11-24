@@ -14,7 +14,7 @@ abstract class DepartmentFieldDescriptionBase extends FieldDescriptionBase
     /**
      * {@inheritdoc}
      */
-    protected function getFieldMapping()
+    protected function getFieldMapping(): array
     {
         return [
             'id',
