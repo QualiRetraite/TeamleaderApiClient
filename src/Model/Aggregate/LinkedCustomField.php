@@ -9,26 +9,26 @@ namespace QR\TeamleaderApiClient\Model\Aggregate;
  */
 class LinkedCustomField
 {
-    private ?\QR\TeamleaderApiClient\Model\Aggregate\LinkedDefinition $definition = null;
+    private ?LinkedDefinition $definition = null;
 
-    private ?string $value = null;
+    private mixed $value = null;
 
-    public function getDefinition(): LinkedDefinition
+    public function getDefinition(): ?LinkedDefinition
     {
         return $this->definition;
     }
 
-    public function setDefinition(LinkedDefinition $definition): void
+    public function setDefinition(?LinkedDefinition $definition): void
     {
         $this->definition = $definition;
     }
 
-    public function getValue(): string
+    public function getValue(): mixed
     {
         return $this->value;
     }
 
-    public function setValue(string $value): void
+    public function setValue(mixed $value): void
     {
         $this->value = $value;
     }
