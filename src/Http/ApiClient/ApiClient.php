@@ -8,46 +8,49 @@ use Http\Client\HttpClient;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use Nascom\OAuth2\Client\Provider\Teamleader;
+use Psr\Http\Message\ResponseInterface;
 use QR\TeamleaderApiClient\Request\Attributes\Filter\FilterInterface;
 use QR\TeamleaderApiClient\Request\Attributes\Page\PageInterface;
 use QR\TeamleaderApiClient\Request\Attributes\Sort\SortInterface;
 use QR\TeamleaderApiClient\Request\RequestInterface;
 
-/**
- * Class ApiClient.
- */
 class ApiClient implements ApiClientInterface
 {
-    /**
-     * @var string
-     */
-    private $defaultMethod;
+    private string $defaultMethod;
 
-    /**
-     * ApiClient constructor.
-     *
-     * @param array $options
-     *                       An associative array of options. Supports the following values:
-     *                       - `default_method`: the default method to use when a requests supports
-     *                       multiple methods.
-     */
     public function __construct(
         protected AbstractProvider $provider,
         protected HttpClient $httpClient,
         private AccessToken $accessToken,
         array $options = []
     ) {
-        $this->defaultMethod = $options['default_method']
-            ?? 'GET';
+        $this->defaultMethod = $options['default_method'] ?? 'GET';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function handle(RequestInterface $request): \Psr\Http\Message\ResponseInterface
+    public function handle(RequestInterface $request): ResponseInterface
     {
         $options = [];
+
+        if ($request->isV1()) {
+            $options['headers']['content-type'] = 'application/x-www-form-urlencoded';
+        } else {
+            $options['headers']['content-type'] = 'application/json';
+        }
+
+        if (!isset($options['headers']['X-Api-Version'])) {
+            $options['headers']['X-Api-Version'] = '2021-09-01';
+        }
+
         $body = $request->getBody();
+
+        array_walk_recursive($body, function (&$val): void {
+            if ($val instanceof \DateTime) {
+                $val = $val->format('Y-m-d');
+            }
+        });
 
         if ($request instanceof FilterInterface) {
             if (!empty($filters = $request->getFilters())) {
@@ -75,12 +78,18 @@ class ApiClient implements ApiClientInterface
         }
 
         if (!empty($body)) {
-            $options['body'] = json_encode($body);
+            if ($request->isV1()) {
+                $options['body'] = http_build_query($body);
+            } else {
+                $options['body'] = json_encode($body);
+            }
         }
+
+        $baseUrl = $request->isV1() ? 'https://app.teamleader.eu/' : Teamleader::API_BASE_URL;
 
         $psrRequest = $this->provider->getAuthenticatedRequest(
             $request->getMethod() ?: $this->defaultMethod,
-            Teamleader::API_BASE_URL.$request->getEndpoint(),
+            $baseUrl.$request->getEndpoint(),
             $this->accessToken,
             $options
         );
