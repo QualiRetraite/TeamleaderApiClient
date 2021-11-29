@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace QR\TeamleaderApiClient\Http\ApiClient;
 
+use Psr\Http\Client\ClientExceptionInterface;
 use QR\TeamleaderApiClient\Request\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * Interface ApiClientInterface.
- */
 interface ApiClientInterface
 {
     /**
-     * @return ResponseInterface
-     *
-     * @throws \Http\Client\Exception
+     * @throws ClientExceptionInterface
      */
-    public function handle(RequestInterface $request);
+    public function handle(RequestInterface $request): ResponseInterface;
 }

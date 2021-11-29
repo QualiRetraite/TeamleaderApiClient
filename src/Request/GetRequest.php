@@ -4,15 +4,9 @@ declare(strict_types=1);
 
 namespace QR\TeamleaderApiClient\Request;
 
-/**
- * Class GetRequest.
- */
 abstract class GetRequest extends BaseRequest
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getMethod()
+    public function getMethod(): string
     {
         return 'GET';
     }
