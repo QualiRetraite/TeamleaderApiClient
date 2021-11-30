@@ -4,25 +4,16 @@ declare(strict_types=1);
 
 namespace QR\TeamleaderApiClient\Request;
 
-/**
- * Trait MultipleMethodsTrait.
- */
 trait MultipleMethodsTrait
 {
-    /**
-     * @var string|null
-     */
-    protected $method;
+    protected ?string $method = null;
 
     public function setMethod(string $method): void
     {
         $this->method = $method;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->method ?: parent::getMethod();
     }

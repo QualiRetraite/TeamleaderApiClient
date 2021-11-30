@@ -4,26 +4,22 @@ declare(strict_types=1);
 
 namespace QR\TeamleaderApiClient\Request;
 
-/**
- * Class BaseRequest.
- */
 abstract class BaseRequest implements RequestInterface
 {
     protected array $body = [];
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBody()
+    public function getBody(): array
     {
         return $this->body;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getMethod()
+    public function getMethod(): string
     {
         return 'GET';
+    }
+
+    public function isV1(): bool
+    {
+        return false;
     }
 }

@@ -4,23 +4,13 @@ declare(strict_types=1);
 
 namespace QR\TeamleaderApiClient\Request;
 
-/**
- * Interface RequestInterface.
- */
 interface RequestInterface
 {
-    /**
-     * @return string|null
-     */
-    public function getMethod();
+    public function getMethod(): string;
 
-    /**
-     * @return string
-     */
-    public function getEndpoint();
+    public function getEndpoint(): string;
 
-    /**
-     * @return array
-     */
-    public function getBody();
+    public function getBody(): array;
+
+    public function isV1(): bool;
 }

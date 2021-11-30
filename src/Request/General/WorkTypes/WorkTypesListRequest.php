@@ -13,9 +13,6 @@ use QR\TeamleaderApiClient\Request\Attributes\Sort\SortTrait;
 use QR\TeamleaderApiClient\Request\BaseRequest;
 use QR\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
-/**
- * Class WorkTypesListRequest.
- */
 class WorkTypesListRequest extends BaseRequest implements FilterInterface, PageInterface, SortInterface
 {
     use FilterTrait;
@@ -23,9 +20,6 @@ class WorkTypesListRequest extends BaseRequest implements FilterInterface, PageI
     use PageTrait;
     use SortTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEndpoint(): string
     {
         return 'workTypes.list';
